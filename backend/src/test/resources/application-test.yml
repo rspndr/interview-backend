@@ -1,0 +1,21 @@
+spring:
+  liquibase:
+    enabled: false
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak-login:
+            provider: keycloak
+            authorization-grant-type: authorization_code
+            client-id: test-client
+            client-secret: test-secret
+            scope: openid,profile,email
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/test-realm
+            user-name-attribute: preferred_username
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/test-realm

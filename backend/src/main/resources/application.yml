@@ -1,0 +1,32 @@
+server:
+  port: 8090
+  error:
+    include-message: always
+
+spring:
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak-login:
+            provider: keycloak
+            authorization-grant-type: authorization_code
+            client-id: ${AUTH_CLIENT_ID}
+            client-secret: ${AUTH_CLIENT_SECRET}
+            scope: ${AUTH_SCOPE}
+        provider:
+          keycloak:
+            issuer-uri: ${AUTH_ISSUER_URI}
+            user-name-attribute: ${AUTH_USERNAME_ATTRIBUTE}
+      resourceserver:
+        jwt:
+          issuer-uri: ${AUTH_ISSUER_URI}

@@ -1,1 +1,89 @@
-services: {}
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+    ports:
+      - "5434:5432"
+    healthcheck:
+      test: pg_isready -U $POSTGRES_USER -d $POSTGRES_DB
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - db:/var/lib/postgresql/data
+      - ./config/postgres/keycloak_init.sql:/docker-entrypoint-initdb.d/keycloak_init.sql
+    networks:
+      - app-network
+  #    command: ["postgres", "-c", "log_statement=all"] #NOTE: temporary debug logging
+
+  keycloak:
+    build:
+      context: ./keycloak
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "5006:5006"
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,address=*:5006,server=y,suspend=n
+      KC_DB: $KEYCLOAK_DB_VENDOR
+      KC_DB_URL: $KEYCLOAK_DB_URL
+      KC_DB_USERNAME: $POSTGRES_USER
+      KC_DB_PASSWORD: $POSTGRES_PASSWORD
+      KC_HEALTH_ENABLED: $KEYCLOAK_HEALTH_ENABLED
+      KC_METRICS_ENABLED: $KEYCLOAK_METRICS_ENABLED
+      KEYCLOAK_ADMIN: $KEYCLOAK_ADMIN_USERNAME
+      KEYCLOAK_ADMIN_PASSWORD: $KEYCLOAK_ADMIN_PASSWORD
+      KEYCLOAK_HOSTNAME: $KEYCLOAK_HOSTNAME
+      DEBUG_PORT: "*:5006"
+      DATASOURCE_URL: $DATASOURCE_URL
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+    healthcheck:
+      test: [ "CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/9000;echo -e \"GET /health/ready HTTP/1.1\r\nhost: http://localhost\r\nConnection: close\r\n\r\n\" >&3;grep \"HTTP/1.1 200 OK\" <&3" ]
+      interval: 5s
+      timeout: 60s
+      retries: 12
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./config/keycloak/import:/opt/keycloak/data/import
+#      - ./config/keycloak/themes/theme:/opt/keycloak/themes
+#      - ./keycloak/build/libs:/opt/keycloak/providers
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8090:8090"
+      - "5005:5005"
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      DATASOURCE_URL: $DATASOURCE_URL
+      AUTH_ISSUER_URI: $AUTH_ISSUER_URI
+      AUTH_CLIENT_ID: $AUTH_CLIENT_ID
+      AUTH_CLIENT_SECRET: $AUTH_CLIENT_SECRET
+      AUTH_USERNAME_ATTRIBUTE: $AUTH_USERNAME_ATTRIBUTE
+      AUTH_SCOPE: $AUTH_SCOPE
+    depends_on:
+      postgres:
+        condition: service_healthy
+      keycloak:
+        condition: service_healthy
+    networks:
+      - app-network
+
+volumes:
+  db:
+
+networks:
+  app-network:
+    driver: bridge
