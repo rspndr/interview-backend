@@ -4,4 +4,4 @@
 
 docker compose build
 
-docker compose up
+docker compose --env-file .env.development up
