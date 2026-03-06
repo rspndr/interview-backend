@@ -1,0 +1,21 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="assignment-002-test-data" author="gavynholt">
+        <sql>
+            INSERT INTO assignment (id, created_at, name, company_code, location) VALUES
+              (gen_random_uuid(), '2026-03-01T09:00:00Z'::timestamptz, 'Downtown Toronto Patrol', 'RSPNDR', ARRAY[43.6532, -79.3832]::double precision[]),
+              (gen_random_uuid(), '2026-03-01T10:00:00Z'::timestamptz, 'North York Site Inspection', 'RSPNDR', ARRAY[43.7615, -79.4111]::double precision[]),
+              (gen_random_uuid(), '2026-03-01T11:00:00Z'::timestamptz, 'Mississauga Alarm Follow-up', 'ALPHA', ARRAY[43.5890, -79.6441]::double precision[]),
+              (gen_random_uuid(), '2026-03-01T12:00:00Z'::timestamptz, 'Scarborough Mobile Check', 'ALPHA', ARRAY[43.7731, -79.2578]::double precision[]),
+              (gen_random_uuid(), '2026-03-01T13:00:00Z'::timestamptz, 'Etobicoke Night Watch', 'BRAVO', ARRAY[43.6205, -79.5132]::double precision[]),
+              (gen_random_uuid(), '2026-03-01T14:00:00Z'::timestamptz, 'Markham Warehouse Patrol', 'BRAVO', ARRAY[43.8561, -79.3370]::double precision[]),
+              (gen_random_uuid(), '2026-03-01T15:00:00Z'::timestamptz, 'Richmond Hill Response Unit', 'CHARLIE', ARRAY[43.8828, -79.4403]::double precision[]),
+              (gen_random_uuid(), '2026-03-01T16:00:00Z'::timestamptz, 'Vaughan Perimeter Check', 'CHARLIE', ARRAY[43.8361, -79.4985]::double precision[]),
+              (gen_random_uuid(), '2026-03-01T17:00:00Z'::timestamptz, 'Oakville Client Escort', 'DELTA', ARRAY[43.4675, -79.6877]::double precision[]),
+              (gen_random_uuid(), '2026-03-01T18:00:00Z'::timestamptz, 'Brampton Incident Standby', 'DELTA', ARRAY[43.7315, -79.7624]::double precision[]);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

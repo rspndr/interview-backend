@@ -31,6 +31,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
 	implementation("org.springframework.boot:spring-boot-starter-webmvc")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("com.infobip:infobip-spring-data-jdbc-querydsl:10.0.5")
+	implementation("com.infobip:infobip-spring-data-jdbc-querydsl-boot-starter:10.0.5")
 
 	compileOnly("org.projectlombok:lombok")
 
@@ -40,6 +43,8 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 
 	annotationProcessor("org.projectlombok:lombok")
+	annotationProcessor("com.infobip:infobip-spring-data-jdbc-annotation-processor-common:10.0.5")
+	annotationProcessor("com.infobip:infobip-spring-data-jdbc-annotation-processor:10.0.5")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-data-jdbc-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-liquibase-test")

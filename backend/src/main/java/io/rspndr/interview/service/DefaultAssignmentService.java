@@ -1,0 +1,46 @@
+package io.rspndr.interview.service;
+
+import com.querydsl.core.BooleanBuilder;
+import io.rspndr.interview.model.Assignment;
+import io.rspndr.interview.model.AssignmentService;
+import io.rspndr.interview.model.QAssignment;
+import io.rspndr.interview.repository.AssignmentRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
+
+@Service
+@RequiredArgsConstructor
+public class DefaultAssignmentService implements AssignmentService {
+
+    private final AssignmentRepository assignmentRepository;
+
+    @Override
+    public Assignment getById(UUID id) {
+        return assignmentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Assignment not found"));
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+        var assignment$ = QAssignment.assignment;
+
+        var result = assignmentRepository.update(query -> query
+                .set(assignment$.deleted, true)
+                .where(assignment$.id.eq(id))
+                .execute());
+
+        if (result == 0) {
+            throw new RuntimeException("Assignment not found");
+        }
+    }
+
+    @Override
+    public List<Assignment> getByCompanyCode(String companyCode) {
+        return assignmentRepository.findAllByCompanyCode(companyCode);
+    }
+
+
+}

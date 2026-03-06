@@ -11,4 +11,4 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 # Copy providers into Keycloak container
 COPY build/libs /opt/keycloak/providers
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm", "--hostname-strict=false"]

@@ -23,14 +23,26 @@ http://localhost:8090
 
 Keycloak administrator console will be available at:
 
-http://localhost:8080
+http://keycloak:8080
+
+To allow keycloak to be recognized as localhost in your browser, add the following entry to your hosts file:
+
+run `sudo nano /etc/hosts` and add the following line:
+
+```
+...
+127.0.0.1       localhost
+127.0.0.1       keycloak   <--- THIS LINE
+255.255.255.255 broadcasthost
+...
+```
 
 ## Test User
 
 A test user is preconfigured in Keycloak for convenience.
 
-- Username: testuser
-- Password: passsword
+- Username: `testuser`
+- Password: `password`
 - Roles: `ROLE_USER`
 
 You can use these credentials to authenticate when testing secured endpoints.
