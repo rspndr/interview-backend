@@ -7,7 +7,7 @@ This project uses Docker to run the application and its dependencies locally.
 To start the development environment, run:
 
 ```bash
-./.dev.sh
+./dev.sh
 ```
 
 NOTE: Environment file `.env.development` is deliberately checked into git with unsecure dummy passwords.
@@ -25,7 +25,7 @@ Keycloak administrator console will be available at:
 
 http://keycloak:8080
 
-To allow keycloak to be recognized as localhost in your browser, add the following entry to your hosts file:
+To allow keycloak to be recognized in place of localhost in your browser, add the following entry to your hosts file:
 
 run `sudo nano /etc/hosts` and add the following line:
 
