@@ -9,7 +9,8 @@
       "emailVerified": true,
       "firstName": "Test",
       "lastName": "User",
-      "email": "test@example.com",
+      "email": "testuser@example.com",
+      "createdTimestamp": "1772830814135",
       "credentials": [
         {
           "type": "password",
@@ -19,6 +20,26 @@
       ],
       "realmRoles": [
         "USER"
+      ]
+    },
+    {
+      "username": "testadmin",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Test",
+      "lastName": "Admin",
+      "email": "testadmin@example.com",
+      "createdTimestamp": "1772830814135",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "USER",
+        "ADMIN"
       ]
     }
   ],
@@ -787,7 +808,7 @@
       "attributes": {
         "oidc.ciba.grant.enabled": "false",
         "backchannel.logout.session.required": "true",
-        "login_theme": "gavyn-theme",
+        "login_theme": "keycloak",
         "post.logout.redirect.uris": "+",
         "display.on.consent.screen": "false",
         "oauth2.device.authorization.grant.enabled": "false",
@@ -1522,7 +1543,7 @@
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
   "smtpServer": {},
-  "loginTheme": "gavyn-theme",
+  "loginTheme": "keycloak",
   "accountTheme": "keycloak.v3",
   "adminTheme": "keycloak.v2",
   "emailTheme": "keycloak",

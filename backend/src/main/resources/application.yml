@@ -22,6 +22,10 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
 
+  jackson:
+    mapper:
+      sort-properties-alphabetically: false
+
   security:
     oauth2:
       client:

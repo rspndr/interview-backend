@@ -5,6 +5,8 @@ import java.util.UUID;
 
 public interface AssignmentService {
 
+    Assignment create(Assignment assignment);
+
     Assignment getById(UUID id);
 
     void deleteById(UUID id);
