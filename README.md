@@ -59,10 +59,10 @@ docker exec -it <container_name> psql -U interview-admin -d interview
 A few example commands while in PSQL to get you started: 
 
 ```
-\l        -- list databases
-\dt       -- list tables
-\c interview   -- connect to database
-\d users  -- describe table
+\l             -- list databases
+\dt            -- list tables
+\c interview   -- connect to interview database
+\d assignment  -- describe assignment table
 
 SELECT * FROM "user";  -- query all users (quotes are required because "user" is a reserved keyword in SQL)
 SELECT * FROM assignment;  -- query all assignments
