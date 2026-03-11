@@ -2,6 +2,11 @@
 
 This project uses Docker to run the application and its dependencies locally.
 
+## Prerequisites
+- Docker: Either Docker Desktop https://www.docker.com/products/docker-desktop/ or Colima https://formulae.brew.sh/formula/colima
+- IntelliJ Community Edition: https://www.jetbrains.com/idea/download/
+- Postman: https://www.postman.com/downloads/
+
 ## Getting Started
 
 To start the development environment, run:
@@ -35,6 +40,32 @@ run `sudo nano /etc/hosts` and add the following line:
 127.0.0.1       keycloak   <--- THIS LINE
 255.255.255.255 broadcasthost
 ...
+```
+
+## Accessing Postgres Data in Docker Exec
+
+Database Name: `interview`
+
+Username: `interview-admin`
+
+Password: `interview-admin`
+
+To access the Postgres database running in Docker, you can use the following command:
+
+```bash
+docker exec -it <container_name> psql -U interview-admin -d interview
+```
+
+A few example commands while in PSQL to get you started: 
+
+```
+\l        -- list databases
+\dt       -- list tables
+\c interview   -- connect to database
+\d users  -- describe table
+
+SELECT * FROM "user";  -- query all users (quotes are required because "user" is a reserved keyword in SQL)
+SELECT * FROM assignment;  -- query all assignments
 ```
 
 ## Test User
