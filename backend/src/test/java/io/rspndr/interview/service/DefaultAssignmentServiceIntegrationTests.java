@@ -2,7 +2,7 @@ package io.rspndr.interview.service;
 
 import io.rspndr.interview.config.InterviewTestConfiguration;
 import io.rspndr.interview.config.TestcontainersConfiguration;
-import io.rspndr.interview.model.Assignment;
+import io.rspndr.interview.model.entity.Assignment;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

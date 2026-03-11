@@ -1,4 +1,4 @@
-package io.rspndr.interview.model;
+package io.rspndr.interview.model.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -13,20 +13,24 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table("assignment")
-public class Assignment {
+@Table("user")
+public class User {
 
     @Id
     @Column("id")
     private UUID id;
     @Column("created_at")
     private Instant createdAt;
-    @Column("name")
-    private String name;
+    @Column("username")
+    private String username;
+    @Column("first_name")
+    private String firstName;
+    @Column("last_name")
+    private String lastName;
+    @Column("email")
+    private String email;
     @Column("company_code")
     private String companyCode;
     @Column("location")
     private List<Double> location;
-    @Column("deleted")
-    private boolean deleted;
 }
