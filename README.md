@@ -6,10 +6,24 @@ This project uses Docker to run the application and its dependencies locally.
 - Docker: Either Docker Desktop https://www.docker.com/products/docker-desktop/ or Colima https://formulae.brew.sh/formula/colima
 - IntelliJ Community Edition: https://www.jetbrains.com/idea/download/
 - Postman: https://www.postman.com/downloads/
+- Java JDK 21: see below for instructions
+
+## Install Azul Zulu OpenJDK 21
+To install Azul Zulu OpenJDK 21, you can follow these steps:
+
+1. Go to Gradle Settings
+![Screenshot 2026-03-11 at 16.12.59.png](screenshots/Screenshot%202026-03-11%20at%2016.12.59.png)
+2. At the bottom of Gradle Settings, click the dropdown menu for "Gradle JVM" and select "Add JDK..."
+![Screenshot 2026-03-11 at 16.10.57.png](screenshots/Screenshot%202026-03-11%20at%2016.10.57.png)
+3. Download JDK...
+![Screenshot 2026-03-11 at 16.11.03.png](screenshots/Screenshot%202026-03-11%20at%2016.11.03.png)
+4. Select version 21, Azul Zulu Community, and click "Download"
+![Screenshot 2026-03-11 at 16.11.15.png](screenshots/Screenshot%202026-03-11%20at%2016.11.15.png)
+
 
 ## Getting Started
 
-To start the development environment, run:
+To start the development environment, ensure docker is running, then run:
 
 ```bash
 ./dev.sh
@@ -53,7 +67,9 @@ Password: `interview-admin`
 To access the Postgres database running in Docker, you can use the following command:
 
 ```bash
-docker exec -it <container_name> psql -U interview-admin -d interview
+docker ps -> confirm the name or ID of postgres:16 container (e.g., interview-postgres-1)
+
+docker exec -it interview-postgres-1 psql -U interview-admin -d interview
 ```
 
 A few example commands while in PSQL to get you started: 
