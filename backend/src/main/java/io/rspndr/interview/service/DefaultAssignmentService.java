@@ -1,8 +1,8 @@
 package io.rspndr.interview.service;
 
 import io.rspndr.interview.model.entity.Assignment;
+import io.rspndr.interview.model.entity.QAssignment;
 import io.rspndr.interview.model.service.AssignmentService;
-import io.rspndr.interview.model.QAssignment;
 import io.rspndr.interview.repository.AssignmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
