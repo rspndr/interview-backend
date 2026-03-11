@@ -1,7 +1,7 @@
 package io.rspndr.interview.repository;
 
-import io.rspndr.interview.model.entity.Assignment;
 import com.infobip.spring.data.jdbc.QuerydslJdbcRepository;
+import io.rspndr.interview.model.entity.User;
 import org.springframework.data.repository.query.ListQueryByExampleExecutor;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface AssignmentRepository extends QuerydslJdbcRepository<Assignment, UUID>, ListQueryByExampleExecutor<Assignment> {
+public interface UserRepository extends QuerydslJdbcRepository<User, UUID>, ListQueryByExampleExecutor<User> {
 
-    List<Assignment> findAllByCompanyCodeAndDeletedIsFalse(String companyCode);
+    List<User> findAllByCompanyCode(String companyCode);
 }

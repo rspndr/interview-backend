@@ -1,7 +1,7 @@
 package io.rspndr.interview.rest;
 
-import io.rspndr.interview.model.Assignment;
-import io.rspndr.interview.model.AssignmentService;
+import io.rspndr.interview.model.entity.Assignment;
+import io.rspndr.interview.model.service.AssignmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

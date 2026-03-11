@@ -1,7 +1,7 @@
 package io.rspndr.interview.service;
 
-import io.rspndr.interview.model.Assignment;
-import io.rspndr.interview.model.AssignmentService;
+import io.rspndr.interview.model.entity.Assignment;
+import io.rspndr.interview.model.service.AssignmentService;
 import io.rspndr.interview.model.QAssignment;
 import io.rspndr.interview.repository.AssignmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -45,7 +45,7 @@ public class DefaultAssignmentService implements AssignmentService {
 
     @Override
     public List<Assignment> getByCompanyCode(String companyCode) {
-        return assignmentRepository.findAllByCompanyCode(companyCode);
+        return assignmentRepository.findAllByCompanyCodeAndDeletedIsFalse(companyCode);
     }
 
 

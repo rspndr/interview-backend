@@ -1,0 +1,32 @@
+
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="user-002-test-data" author="gavynholt">
+        <sql>
+            INSERT INTO "user" (id, created_at, username, first_name, last_name, email, company_code, location) VALUES
+                (gen_random_uuid(), '2026-03-01T09:00:00Z'::timestamptz, 'jsmith', 'John', 'Smith', 'john.smith@example.com', 'RSPNDR', ARRAY[43.6532, -79.3832]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T09:15:00Z'::timestamptz, 'adoe', 'Alice', 'Doe', 'alice.doe@example.com', 'RSPNDR', ARRAY[43.7615, -79.4111]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T09:30:00Z'::timestamptz, 'bjohnson', 'Brian', 'Johnson', 'brian.johnson@example.com', 'ALPHA', ARRAY[43.5890, -79.6441]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T09:45:00Z'::timestamptz, 'cwilson', 'Chloe', 'Wilson', 'chloe.wilson@example.com', 'ALPHA', ARRAY[43.7731, -79.2578]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T10:00:00Z'::timestamptz, 'dlee', 'Daniel', 'Lee', 'daniel.lee@example.com', 'BRAVO', ARRAY[43.6205, -79.5132]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T10:15:00Z'::timestamptz, 'egarcia', 'Emma', 'Garcia', 'emma.garcia@example.com', 'BRAVO', ARRAY[43.8561, -79.3370]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T10:30:00Z'::timestamptz, 'fmartin', 'Frank', 'Martin', 'frank.martin@example.com', 'CHARLIE', ARRAY[43.8828, -79.4403]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T10:45:00Z'::timestamptz, 'gharris', 'Grace', 'Harris', 'grace.harris@example.com', 'CHARLIE', ARRAY[43.8361, -79.4985]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T11:00:00Z'::timestamptz, 'ihall', 'Isaac', 'Hall', 'isaac.hall@example.com', 'DELTA', ARRAY[43.4675, -79.6877]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T11:15:00Z'::timestamptz, 'jyoung', 'Julia', 'Young', 'julia.young@example.com', 'DELTA', ARRAY[43.7315, -79.7624]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T11:30:00Z'::timestamptz, 'kking', 'Kevin', 'King', 'kevin.king@example.com', 'ECHO', ARRAY[43.7001, -79.4163]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T11:45:00Z'::timestamptz, 'lwright', 'Laura', 'Wright', 'laura.wright@example.com', 'ECHO', ARRAY[43.6548, -79.3883]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T12:00:00Z'::timestamptz, 'mlopez', 'Michael', 'Lopez', 'michael.lopez@example.com', 'FOXTROT', ARRAY[43.6510, -79.3470]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T12:15:00Z'::timestamptz, 'nscott', 'Natalie', 'Scott', 'natalie.scott@example.com', 'FOXTROT', ARRAY[43.6426, -79.3871]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T12:30:00Z'::timestamptz, 'owalker', 'Owen', 'Walker', 'owen.walker@example.com', 'GOLF', ARRAY[43.6487, -79.3854]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T12:45:00Z'::timestamptz, 'pphillips', 'Paige', 'Phillips', 'paige.phillips@example.com', 'GOLF', ARRAY[43.6408, -79.3818]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T13:00:00Z'::timestamptz, 'qadams', 'Quinn', 'Adams', 'quinn.adams@example.com', 'HOTEL', ARRAY[43.6530, -79.4000]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T13:15:00Z'::timestamptz, 'rnelson', 'Ryan', 'Nelson', 'ryan.nelson@example.com', 'HOTEL', ARRAY[43.6629, -79.3957]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T13:30:00Z'::timestamptz, 'sturner', 'Sophie', 'Turner', 'sophie.turner@example.com', 'INDIA', ARRAY[43.6518, -79.3700]::double precision[]),
+                (gen_random_uuid(), '2026-03-01T13:45:00Z'::timestamptz, 'tparker', 'Thomas', 'Parker', 'thomas.parker@example.com', 'INDIA', ARRAY[43.6896, -79.4501]::double precision[]);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
