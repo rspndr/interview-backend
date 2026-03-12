@@ -1,6 +1,7 @@
 package io.rspndr.interview.service;
 
 import io.rspndr.interview.model.entity.User;
+import io.rspndr.interview.model.exception.NotFoundException;
 import io.rspndr.interview.model.service.UserService;
 import io.rspndr.interview.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,7 @@ public class DefaultUserService implements UserService {
     @Override
     public User getById(UUID id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new NotFoundException("User not found"));
     }
 
     @Override
@@ -34,7 +35,7 @@ public class DefaultUserService implements UserService {
         if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
         } else {
-            throw new RuntimeException("User not found");
+            throw new NotFoundException("User not found");
         }
     }
 

@@ -2,6 +2,7 @@ package io.rspndr.interview.service;
 
 import io.rspndr.interview.model.entity.Assignment;
 import io.rspndr.interview.model.entity.QAssignment;
+import io.rspndr.interview.model.exception.NotFoundException;
 import io.rspndr.interview.model.service.AssignmentService;
 import io.rspndr.interview.repository.AssignmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class DefaultAssignmentService implements AssignmentService {
     @Override
     public Assignment getById(UUID id) {
         return assignmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Assignment not found"));
+                .orElseThrow(() -> new NotFoundException("Assignment not found"));
     }
 
     @Override
@@ -39,7 +40,7 @@ public class DefaultAssignmentService implements AssignmentService {
                 .execute());
 
         if (result == 0) {
-            throw new RuntimeException("Assignment not found");
+            throw new NotFoundException("Assignment not found");
         }
     }
 
