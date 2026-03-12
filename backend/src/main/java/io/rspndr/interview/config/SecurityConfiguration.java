@@ -23,7 +23,7 @@ public class SecurityConfiguration {
                                 "/actuator/health",
                                 "/api/hello/**",
                                 "/api/assignments/**",
-                                "/api/users/"
+                                "/api/users/**"
                         ).permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/**").hasAnyRole("USER", "ADMIN")
