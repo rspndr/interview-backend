@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface UserService {
 
-    User create(User assignment);
+    User create(User user);
 
     User getById(UUID id);
 
