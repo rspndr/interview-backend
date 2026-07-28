@@ -8,7 +8,7 @@ description = "RSPNDR Interview Project"
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+		languageVersion = JavaLanguageVersion.of(25)
 	}
 }
 
@@ -17,5 +17,5 @@ repositories {
 }
 
 dependencies {
-	implementation("org.keycloak:keycloak-core:25.0.4")
+	implementation("org.keycloak:keycloak-core:26.7.0")
 }

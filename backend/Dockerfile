@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk:21-jre
+FROM azul/zulu-openjdk:25-jre
 WORKDIR /app
 #COPY . .
 #RUN ./gradlew build -x test

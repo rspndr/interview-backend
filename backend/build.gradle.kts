@@ -1,6 +1,6 @@
 plugins {
 	java
-	id("org.springframework.boot") version "4.0.3"
+	id("org.springframework.boot") version "4.1.0"
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -10,7 +10,7 @@ description = "RSPNDR Interview Project"
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+		languageVersion = JavaLanguageVersion.of(25)
 	}
 }
 
@@ -24,6 +24,8 @@ repositories {
 	mavenCentral()
 }
 
+val infobipVersion = "10.0.7"
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-liquibase")
@@ -32,8 +34,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
 	implementation("org.springframework.boot:spring-boot-starter-webmvc")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("com.infobip:infobip-spring-data-jdbc-querydsl:10.0.5")
-	implementation("com.infobip:infobip-spring-data-jdbc-querydsl-boot-starter:10.0.5")
+	implementation("com.infobip:infobip-spring-data-jdbc-querydsl:$infobipVersion")
+	implementation("com.infobip:infobip-spring-data-jdbc-querydsl-boot-starter:$infobipVersion")
 
 	compileOnly("org.projectlombok:lombok")
 
@@ -43,8 +45,8 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 
 	annotationProcessor("org.projectlombok:lombok")
-	annotationProcessor("com.infobip:infobip-spring-data-jdbc-annotation-processor-common:10.0.5")
-	annotationProcessor("com.infobip:infobip-spring-data-jdbc-annotation-processor:10.0.5")
+	annotationProcessor("com.infobip:infobip-spring-data-jdbc-annotation-processor-common:$infobipVersion")
+	annotationProcessor("com.infobip:infobip-spring-data-jdbc-annotation-processor:$infobipVersion")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-data-jdbc-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-liquibase-test")

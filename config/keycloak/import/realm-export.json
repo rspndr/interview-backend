@@ -2381,7 +2381,7 @@
     "organizationsEnabled": "false",
     "acr.loa.map": "{}"
   },
-  "keycloakVersion": "25.0.4",
+  "keycloakVersion": "26.7.0",
   "userManagedAccessAllowed": false,
   "organizationsEnabled": false,
   "clientProfiles": {
