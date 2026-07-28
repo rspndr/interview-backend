@@ -2,7 +2,6 @@ package io.rspndr.interview.service;
 
 import io.rspndr.interview.model.entity.User;
 import io.rspndr.interview.model.exception.NotFoundException;
-import io.rspndr.interview.model.service.PositionService;
 import io.rspndr.interview.model.service.UserService;
 import io.rspndr.interview.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +14,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class DefaultUserService implements UserService {
 
+    // DEMO (resolved): UserService no longer knows about positions.
+    // Cross-cutting cleanup lives in UserOffboardingService instead.
     private final UserRepository userRepository;
-
-    // DEMO: ...and UserService depends on PositionService. Circular!
-    private final PositionService positionService;
 
     @Override
     public User create(User user) {
@@ -38,7 +36,6 @@ public class DefaultUserService implements UserService {
 
         if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
-            positionService.deleteAllForUser(id); // clean up the user's position history
         } else {
             throw new NotFoundException("User not found");
         }

@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequiredArgsConstructor
 public class DefaultPositionService implements PositionService {
 
-    // DEMO: PositionService depends on UserService...
+    // DEMO (resolved): this dependency is fine — it's one-directional now.
     private final UserService userService;
 
     private final Map<UUID, Position> lastKnownPositions = new ConcurrentHashMap<>();

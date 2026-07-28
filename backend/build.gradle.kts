@@ -25,6 +25,7 @@ repositories {
 }
 
 val infobipVersion = "10.0.7"
+val mapstructVersion = "1.6.3"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
@@ -36,6 +37,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("com.infobip:infobip-spring-data-jdbc-querydsl:$infobipVersion")
 	implementation("com.infobip:infobip-spring-data-jdbc-querydsl-boot-starter:$infobipVersion")
+	implementation("org.mapstruct:mapstruct:$mapstructVersion")
 
 	compileOnly("org.projectlombok:lombok")
 
@@ -45,6 +47,8 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 
 	annotationProcessor("org.projectlombok:lombok")
+	annotationProcessor("org.mapstruct:mapstruct-processor:$mapstructVersion")
+	annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
 	annotationProcessor("com.infobip:infobip-spring-data-jdbc-annotation-processor-common:$infobipVersion")
 	annotationProcessor("com.infobip:infobip-spring-data-jdbc-annotation-processor:$infobipVersion")
 

@@ -1,6 +1,7 @@
 package io.rspndr.interview.rest;
 
-import io.rspndr.interview.model.entity.User;
+import io.rspndr.interview.mapper.UserMapper;
+import io.rspndr.interview.model.dto.UserDto;
 import io.rspndr.interview.model.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,14 +18,17 @@ import java.util.UUID;
 public class UsersRestController {
 
     private final UserService userService;
+    private final UserMapper userMapper;
 
     @GetMapping("{id}")
-    public User getAssignment(@PathVariable UUID id) {
-        return userService.getById(id);
+    public UserDto getUser(@PathVariable UUID id) {
+        return userMapper.toDto(userService.getById(id));
     }
 
     @GetMapping("company/{companyCode}")
-    public List<User> getAssignments(@PathVariable String companyCode) {
-        return userService.getByCompanyCode(companyCode);
+    public List<UserDto> getUsersByCompany(@PathVariable String companyCode) {
+        return userService.getByCompanyCode(companyCode).stream()
+                .map(userMapper::toDto)
+                .toList();
     }
 }
